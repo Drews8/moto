@@ -1,145 +1,396 @@
-@media (max-width: 1330px){
-	.header-nav{
+@media (max-width: 1330px) {
+  .header-nav {
+    padding-right: 25px;
 
-		padding-right: 25px;
+    &__item a {
+      font-size: 14px;
+      font-weight: 600;
+    }
 
-		&__item a{
-			font-size: 14px;
-			font-weight: 600;
-		}
+    li + li {
+      margin-left: 15px;
+    }
+  }
+  .advantages {
+    order: 10;
+    padding-left: 25px;
+    padding-right: 80px;
+    width: 50%;
 
-		li+li{
-			margin-left: 15px;
-		}
-	}
+    &::after {
+      right: 0;
+      background-position-x: 179px;
+    }
+  }
+  .team {
+    padding-left: 0;
+    padding-right: 25px;
+    width: 50%;
+    &-person {
+      margin-left: auto;
+    }
+  }
+}
+@media (max-width: 1250px) {
+  .services {
+    padding-bottom: 25px;
+  }
+  .blog {
+    padding-bottom: 0;
+  }
+  .services-items,
+  .blog-items {
+    flex-wrap: wrap;
+    justify-content: space-around;
+  }
+  .services-item,
+  .blog-item {
+    padding-bottom: 50px;
+    max-width: 400px;
+    margin: 0 40px;
+  }
 }
 
-@media (max-width: 1130px){
-	.header-nav{
-		align-items: flex-start;
-	}
+@media (max-width: 1130px) {
+  .header-nav {
+    align-items: flex-start;
+  }
 
-	.header-links{
-		flex-direction: column;
-		margin-top: 50px;
-		li+li{
-			margin-left: 0;
-			margin-top: 25px;
-		}
-	}
+  .header-links {
+    flex-direction: column;
+    margin-top: 50px;
+    li + li {
+      margin-left: 0;
+      margin-top: 25px;
+    }
+  }
 }
 
-@media (max-width: 1025px){
-	.header-main{
-		img{
-			height: 60vw;
-		}
-		&__title{
-			font-size: 9vw;
-			line-height: 8vw;
-		}
-		
-	}	
+@media (max-width: 1025px) {
+  .header-main {
+    img {
+      height: 60vw;
+    }
+    &__title {
+      font-size: 9vw;
+      line-height: 8vw;
+    }
+  }
+  .about-us {
+    display: block;
+  }
+  .advantages {
+    width: 100%;
+    &-container {
+      margin: 0 auto;
+    }
+    &::after {
+      bottom: 0;
+      right: 0;
+      transform: translateY(-15%);
+    }
+    &-item:nth-of-type(2) {
+      p {
+        padding-right: calc(550px - 80vw);
+      }
+    }
+  }
+  .team {
+    width: 100%;
+
+    &-person {
+      margin: 0 auto;
+    }
+  }
 }
 
-@media (max-width: 920px){
-	
-	.header-bg{
-		border-top: 60px solid #fff;
-		
-	}
-	.header-logo{
-		padding-left: 30px;
-		margin-top: -60px;
-		color: $main-color;
-		&__image{
-			display: none;
-		}
-	}
-	.header-nav{
-		display: none;
-		
-		a{
-			margin-top: 17px;
-		}
-	}
-	.header-links{
-		margin-top: 0px;
-		padding-right: 30px;
-	}
-	a.header-links__item{
-		&_burger{
-			margin-top: -60px;
-			margin-bottom: 30px;
-			width: 60px;
-			height: 60px;
-			display: flex;
-			align-items: center;
-			justify-content: center;
-			flex-direction: column;
-			border: none;
-			
-			
-			.bar{
-				width: 35px;
-				height: 3px;
-				background-color: $main-color;
-				margin: 3px auto;
-				transition: 0.4s;
-			}
-		}
-		
-	}
-	.header-main{
-		img{
-			height: 60vw;
-		}
-		&__title{
-			font-size: 8vw;
-			line-height: 7vw;
-		}
-		
-	}
+@media (max-width: 920px) {
+  .header-bg {
+    border-top: 60px solid #fff;
+  }
+  .header-logo {
+    padding-left: 30px;
+    margin-top: -60px;
+    color: $main-color;
+    &__image {
+      display: none;
+    }
+  }
+  .header-nav {
+    display: none;
+
+    a {
+      margin-top: 17px;
+    }
+  }
+  .header-links {
+    margin-top: 0px;
+    padding-right: 30px;
+  }
+  a.header-links__item {
+    &_burger {
+      margin-top: -60px;
+      margin-bottom: 30px;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      border: none;
+
+      .bar {
+        width: 35px;
+        height: 3px;
+        background-color: $main-color;
+        margin: 3px auto;
+        transition: 0.4s;
+      }
+    }
+  }
+  .header-main {
+    img {
+      height: 60vw;
+    }
+    &__title {
+      font-size: 8vw;
+      line-height: 7vw;
+    }
+  }
+  .reviews {
+    position: relative;
+    padding: 60px 15px 0;
+    &__main {
+      display: block;
+    }
+    &__comments {
+      width: 80%;
+      margin: 0 auto;
+    }
+    &__slider {
+      margin: 0 auto;
+    }
+    &__img {
+      display: none;
+    }
+  }
+  .slider-slide {
+    padding: 40px 50px 70px;
+  }
+  .travels {
+    &__title {
+      max-width: 700px;
+      margin: 0 auto;
+      white-space: normal;
+    }
+    &__text {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    &-main {
+      flex-wrap: wrap;
+    }
+  }
+  .info {
+    width: 100%;
+    flex-wrap: wrap;
+    &__item {
+      padding-top: 30px;
+      padding-bottom: 30px;
+    }
+    &-left {
+      .info-wrap {
+        margin-left: 140px;
+        margin-right: 0;
+        padding: 80px 15px 20px;
+      }
+      &::after {
+        left: calc(-382px / 2);
+        right: auto;
+      }
+    }
+    &-right {
+      .info-wrap {
+        margin-right: 150px;
+        margin-left: 0;
+        padding: 80px 15px 20px;
+      }
+      position: relative;
+      &::after {
+        content: "";
+        height: 689px;
+        width: 420px;
+
+        z-index: 10;
+        background: url(../img/travels-moto3.png) no-repeat;
+        background-position: 210px center;
+        background-size: cover;
+        position: absolute;
+        right: (-420px / 2);
+        top: 55%;
+        transform: translate(-210px, -50%);
+      }
+    }
+  }
+  .start {
+    .wrap {
+      padding-left: 30px;
+      padding-right: 30px;
+    }
+    &__title {
+      white-space: normal;
+    }
+  }
 }
 
-@media (max-width: 768px){
-	.header-bg{
-		&::after{
-			display: none;
-	}
+@media (max-width: 768px) {
+  .header-bg {
+    &::after {
+      display: none;
+    }
+  }
+  .header-links {
+    flex-direction: row;
+    li:first-of-type {
+      position: absolute;
+      right: 0;
+      top: 60px;
+    }
+    li + li {
+      margin-left: 20px;
+    }
+  }
+  .header-main {
+    img {
+      min-height: auto;
+    }
+    &__title {
+      padding-bottom: 100px;
+    }
+  }
+  .blog__text {
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
-	.header-links{
-		flex-direction: row;
-		li:first-of-type{
-			position: absolute;
-			right: 0;
-			top: 60px;
-		}
-		li+li{
-			margin-left: 20px;
-		}
-	}
-	.header-main{
-		img{
-			min-height: auto;
-		}
-		&__title{
-		padding-bottom: 100px;
-		}
-	}
-	}
-
-
-@media (max-width: 450px){
-	.header-links{
-		width: 100%;
-		justify-content: space-around;
-	}
-	.header-main__title{
-		font-size: 7vh;
-		line-height: 9vh;
-		white-space: normal;
-		text-shadow: 1px 1px 2px #000;
-		
-	}
+@media (max-width: 640px) {
+  .contacts {
+    padding-top: 70px;
+    &-inner {
+      flex-wrap: wrap;
+      padding-bottom: 35px;
+    }
+    &-item {
+      width: 100%;
+      padding: 30px 15px;
+    }
+    &-links {
+      flex-wrap: wrap;
+      justify-content: center;
+      li + li {
+        margin-left: 0px;
+      }
+      &__item {
+        width: 25%;
+        padding-bottom: 25px;
+      }
+      a {
+        margin: 0 auto;
+      }
+    }
+  }
+}
+@media (max-width: 550px) {
+  .advantages-item:nth-of-type(2) {
+    p {
+      padding-right: calc(450px - 70vw);
+    }
+  }
+  .team {
+    padding-right: 15px;
+    padding-left: 15px;
+  }
+  .team-person {
+    flex-direction: column;
+  }
+  .team-dsc {
+    text-align: center;
+    &_reverse {
+      order: 10;
+    }
+    span {
+      vertical-align: bottom;
+    }
+  }
+  .start {
+    &::after {
+      font-size: 150px;
+      bottom: -14%;
+    }
+  }
+}
+@media (max-width: 500px) {
+  .info__item {
+    font-size: 45px;
+  }
+}
+@media (max-width: 450px) {
+  .header-links {
+    width: 100%;
+    justify-content: space-around;
+  }
+  .header-main__title {
+    font-size: 7vh;
+    line-height: 9vh;
+    white-space: normal;
+    text-shadow: 1px 1px 2px #000;
+    padding: 0 10px 20px;
+  }
+  .services-item,
+  .blog-item {
+    padding-bottom: 25px;
+    padding-top: 25px;
+    border-bottom: 1px dashed rgba($main-color, 0.4);
+  }
+  .blog__text {
+    padding-bottom: 35px;
+  }
+  .advantages {
+    max-width: auto;
+    padding-right: 15px;
+    padding-left: 15px;
+    &__title {
+      text-align: center;
+    }
+  }
+  .advantages-item:nth-of-type(2) {
+    p {
+      padding-right: 170px;
+    }
+  }
+  .advantages-item:nth-of-type(3) {
+    p {
+      padding-right: 70px;
+    }
+  }
+  .reviews__comments {
+    margin: 0;
+    width: 100%;
+  }
+  .slider-slide {
+    padding: 40px 25px 50px;
+  }
+  .info__item {
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: 10px;
+  }
+  .info__text {
+    font-size: 16px;
+  }
+  .copy {
+    font-size: 16px;
+    padding-left: 15px;
+    padding-right: 15px;
+  }
 }
