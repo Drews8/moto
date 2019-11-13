@@ -40,7 +40,7 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
+/* 
 .icon-map-marker:before {
   content: "\f041";
 }
@@ -67,4 +67,13 @@
 }
 .icon-vk:before {
   content: "\e905";
+} */
+.icon-arrow-left:before {
+  content: "\f060";
+}
+.icon-arrow-right:before {
+  content: "\f061";
+}
+.icon-arrow-up:before {
+  content: "\f062";
 }

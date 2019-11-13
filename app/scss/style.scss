@@ -20,6 +20,10 @@ body {
   color: #fff;
   min-width: 320px;
 }
+.noScroll {
+  overflow: hidden;
+  height: 100%;
+}
 
 a {
   color: inherit;
@@ -50,6 +54,13 @@ h2 {
   &-bg {
     position: absolute;
     background: linear-gradient(rgba(#000, 0.5), rgba(#000, 0.5)), url(../img/header-bg.jpg) no-repeat center;
+
+    /* Create the parallax scrolling effect */
+    height: 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+
     background-size: cover;
     height: 100%;
     width: 100%;
@@ -128,7 +139,7 @@ h2 {
   z-index: 0;
   display: flex;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: center;
 
   &__item a {
     display: block;
@@ -140,6 +151,28 @@ h2 {
     line-height: 27px;
     letter-spacing: 0.8px;
     text-transform: uppercase;
+    position: relative;
+    transition: 0.5s;
+    &:hover {
+      font-size: 17px;
+      text-shadow: #000 1px 1px;
+      margin-right: -4px;
+    }
+    &::after {
+      display: block;
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 10%;
+      bottom: -3px;
+      left: 0;
+      border-bottom: 2px solid rgba(#fff, 0.8);
+      transition: 0.5s;
+    }
+    &:hover::after {
+      width: 80%;
+      box-shadow: #000 0px 1px 25px;
+    }
   }
 
   li {
@@ -147,7 +180,8 @@ h2 {
   }
 
   li + li {
-    margin-left: 30px;
+    margin-left: 15px;
+    margin-right: 15px;
   }
   ul {
     display: flex;
@@ -166,7 +200,34 @@ h2 {
   li + li {
     margin-left: 25px;
   }
-
+  &__item:not(:nth-child(1)) {
+    a {
+      &:before {
+        content: "";
+        position: absolute;
+        top: -20px;
+        left: 50%;
+        transform: translate(50%, -50%) scale(1);
+        display: block;
+        width: 40px;
+        height: 40px;
+        background: #fff;
+        border-radius: 50px;
+        transition: 1s;
+      }
+      &:hover {
+        &:before {
+          transition: 1s;
+          transform: scale(5.7);
+          box-shadow: #fff 5px 5px;
+        }
+        &:after {
+          color: $main-color;
+          transition-delay: 0.7;
+        }
+      }
+    }
+  }
   &__item {
     a {
       display: block;
@@ -178,25 +239,29 @@ h2 {
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+      overflow: hidden;
     }
-    a::before {
+    a::after {
       font-family: "icomoon";
       font-size: 21px;
+      color: #fff;
+      z-index: 2;
     }
 
-    &_gp::before {
+    &_gp::after {
       content: "\e902";
     }
 
-    &_vk::before {
+    &_vk::after {
       content: "\e905";
     }
 
-    &_fb::before {
+    &_fb::after {
       content: "\e903";
     }
 
-    &_youtube::before {
+    &_youtube::after {
       content: "\e904";
     }
   }
@@ -222,6 +287,16 @@ a.header-links__item_burger {
     display: block;
     margin: 0 auto;
     z-index: 1;
+    animation: scale 5s ease-in-out;
+
+    @keyframes scale {
+      0% {
+				transform: scale(0.93);
+			}
+			100%{
+				transform: scale(1);
+			}
+    }
   }
 
   &__title {
@@ -261,6 +336,23 @@ a.header-links__item_burger {
       height: auto;
     }
   }
+  &__img:hover {
+    .overlay::before {
+      bottom: -5px;
+      left: -5px;
+    }
+    img {
+      filter: blur(2px) grayscale(50%);
+      transition: 0.5s;
+    }
+
+    .overlay-info {
+      bottom: 15px;
+      left: 15px;
+      transform: scale(1.15);
+      transition: 0.5s;
+    }
+  }
   &__overlay::before {
     content: "";
     width: 0;
@@ -271,6 +363,7 @@ a.header-links__item_burger {
     border-width: 160px 0 0 160px;
     border-color: transparent transparent transparent $main-color;
     border-style: solid;
+    transition: 0.5s;
   }
 
   &__title {
@@ -293,13 +386,20 @@ a.header-links__item_burger {
 
   &__btn {
     display: inline-block;
-    padding: 10px 30px;
-    background-color: $main-color;
+		padding: 10px 30px;
+		color: #fff;
+		background-color: $main-color;
+		transition: .5s;
     border-radius: 20px;
 
     font-family: "BebasNeue-Book";
     font-size: 21px;
-    font-weight: 600;
+		font-weight: 600;
+		&:hover{
+			background-color: #fff;
+			color: $main-color;
+			
+		}
   }
 }
 
@@ -307,6 +407,7 @@ a.header-links__item_burger {
   position: absolute;
   bottom: 5px;
   left: 5px;
+  transition: 0.7s;
 
   &__title {
     font-family: "Bebas-Regular";
@@ -333,6 +434,7 @@ a.header-links__item_burger {
   padding-top: 65px;
   background-color: $main-color;
   position: relative;
+  z-index: 3;
   &-container {
     max-width: 500px;
     margin-left: auto;
@@ -375,6 +477,7 @@ a.header-links__item_burger {
   padding-left: 200px;
   background-color: #fff;
   padding-top: 80px;
+  z-index: 1;
   &-person {
     max-width: 450px;
     display: flex;
@@ -454,9 +557,23 @@ a.header-links__item_burger {
     }
   }
 }
+.slider-btn {
+  position: absolute;
+  bottom: 30px;
+  font-size: 25px;
+  font-weight: 10;
+  color: #000;
+}
+.icon-arrow-right {
+  right: 47%;
+}
+.icon-arrow-left {
+  right: 53%;
+}
 
 .slider {
   color: #212121;
+  position: relative;
   &-slide {
     padding: 40px 80px 70px;
   }
@@ -488,11 +605,7 @@ a.header-links__item_burger {
 .travels {
   background-color: #000;
   position: relative;
-<<<<<<< HEAD
   mix-blend-mode: darken;
-=======
-  mix-blend-mode: lighten;
->>>>>>> 4b277ce734adc2c14050ecd0007a78b0b2cceaab
   .wrap {
     max-width: 900px;
   }
@@ -597,6 +710,25 @@ a.header-links__item_burger {
 .blog {
   z-index: -1;
   padding-bottom: 70px;
+
+  &-item__img:hover {
+    .overlay::before {
+      bottom: -5px;
+      left: -5px;
+      transition: 0.5s;
+    }
+    img {
+      filter: blur(2px) grayscale(50%);
+      transition: 0.5s;
+    }
+
+    .overlay-info {
+      bottom: 18px;
+      left: 18px;
+      transform: scale(1.15);
+      transition: 0.5s;
+    }
+  }
 
   .overlay-info {
     &__title {
@@ -763,39 +895,72 @@ a.header-links__item_burger {
       height: 50px;
       border: 3px solid #f0d839;
       border-radius: 100%;
+      background-color: #ededed;
+      overflow: hidden;
 
       display: flex;
       justify-content: center;
       align-items: center;
+      position: relative;
+      //------------
+
+      &:before {
+        content: "";
+        position: absolute;
+        z-index: 0;
+        top: -20px;
+        left: 50%;
+        transform: translate(50%, -50%) scale(1);
+        display: block;
+        width: 40px;
+        height: 40px;
+        background: $main-color;
+        border-radius: 50px;
+        transition: 1s;
+      }
+      &:hover {
+        &:before {
+          transition: 1s;
+          transform: scale(5.7);
+          box-shadow: #fff 5px 5px;
+        }
+        &:after {
+          color: #fff;
+          transition-delay: 0.7;
+        }
+      }
+
+      //------------
     }
-    a::before {
+    a::after {
       font-family: "icomoon";
       font-size: 21px;
       color: #353535;
+      z-index: 1;
     }
 
-    &_gp::before {
+    &_gp::after {
       content: "\e902";
     }
 
-    &_vk::before {
+    &_vk::after {
       content: "\e905";
     }
 
-    &_fb::before {
+    &_fb::after {
       content: "\e903";
     }
 
-    &_youtube::before {
+    &_youtube::after {
       content: "\e904";
     }
-    &_in::before {
+    &_in::after {
       content: "\e901";
     }
-    &_digg::before {
+    &_digg::after {
       content: "\e900";
     }
-    &_deviant::before {
+    &_deviant::after {
       content: "\f1bd";
     }
   }

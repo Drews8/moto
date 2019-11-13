@@ -67,6 +67,9 @@
 }
 
 @media (max-width: 1025px) {
+  .header-bg {
+    background-attachment: scroll;
+  }
   .header-main {
     img {
       height: 60vw;
@@ -97,11 +100,19 @@
   }
   .team {
     width: 100%;
-<<<<<<< HEAD
 
     &-person {
       margin: 0 auto;
     }
+  }
+  .slider-btn {
+    font-size: 30px;
+  }
+  .icon-arrow-right {
+    right: 45%;
+  }
+  .icon-arrow-left {
+    right: 55%;
   }
 }
 
@@ -124,6 +135,47 @@
       margin-top: 17px;
     }
   }
+  .header-content {
+    position: static;
+  }
+  .header.blackout {
+    &::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      z-index: 10;
+      background-color: rgba(#000, 0.94);
+      animation: colorchange .6s;
+
+      @keyframes colorchange {
+        0% {
+          background-color: rgba(#000, 0);
+        }
+        100% {
+          background-color: rgba(#000, 0.94);
+        }
+      }
+    }
+    .header-links__item:not(:nth-child(1)) {
+      display: none;
+    }
+  }
+  .header-nav.active {
+    display: block;
+    z-index: 11;
+    position: absolute;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    ul {
+      flex-direction: column;
+    }
+  }
   .header-links {
     margin-top: 0px;
     padding-right: 30px;
@@ -132,22 +184,52 @@
     &_burger {
       margin-top: -60px;
       margin-bottom: 30px;
+      padding-left: 12px;
+      padding-right: 12px;
       width: 60px;
       height: 60px;
+
       display: flex;
       align-items: center;
       justify-content: center;
       flex-direction: column;
       border: none;
+      cursor: pointer;
 
       .bar {
-        width: 35px;
+        width: 36px;
         height: 3px;
         background-color: $main-color;
-        margin: 3px auto;
+        margin: 3px 0 3px auto;
         transition: 0.4s;
       }
+      &:hover .bar1 {
+        width: 24px;
+      }
+      &:hover .bar2 {
+        width: 30px;
+      }
     }
+  }
+  .header-links {
+    z-index: 11;
+    .change .bar {
+      background-color: #fff;
+    }
+  }
+
+  .change .bar1 {
+    width: 36px !important;
+    transform: rotate(-45deg) translate(-6px, 6px);
+  }
+
+  .change .bar2 {
+    opacity: 0;
+  }
+
+  .change .bar3 {
+    width: 36px !important;
+    transform: rotate(45deg) translate(-7px, -7px);
   }
   .header-main {
     img {
@@ -259,188 +341,11 @@
     }
     li + li {
       margin-left: 20px;
-		}
-		&__item {
-			a{
-				border-color: $main-color;
-			}
-		}
-  }
-  .header-main {
-    img {
-      min-height: auto;
     }
-    &__title {
-      padding-bottom: 100px;
-    }
-  }
-  .blog__text {
-    padding-left: 15px;
-    padding-right: 15px;
-  }
-}
-=======
-
-    &-person {
-      margin: 0 auto;
-    }
-  }
-}
-
-@media (max-width: 920px) {
-  .header-bg {
-    border-top: 60px solid #fff;
-  }
-  .header-logo {
-    padding-left: 30px;
-    margin-top: -60px;
-    color: $main-color;
-    &__image {
-      display: none;
-    }
-  }
-  .header-nav {
-    display: none;
-
-    a {
-      margin-top: 17px;
-    }
-  }
-  .header-links {
-    margin-top: 0px;
-    padding-right: 30px;
-  }
-  a.header-links__item {
-    &_burger {
-      margin-top: -60px;
-      margin-bottom: 30px;
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      border: none;
-
-      .bar {
-        width: 35px;
-        height: 3px;
-        background-color: $main-color;
-        margin: 3px auto;
-        transition: 0.4s;
-      }
-    }
-  }
-  .header-main {
-    img {
-      height: 60vw;
-    }
-    &__title {
-      font-size: 8vw;
-      line-height: 7vw;
-    }
-  }
-  .reviews {
-    position: relative;
-    padding: 60px 15px 0;
-    &__main {
-      display: block;
-    }
-    &__comments {
-      width: 80%;
-      margin: 0 auto;
-    }
-    &__slider {
-      margin: 0 auto;
-    }
-    &__img {
-      display: none;
-    }
-  }
-  .slider-slide {
-    padding: 40px 50px 70px;
-  }
-  .travels {
-    &__title {
-      max-width: 700px;
-      margin: 0 auto;
-      white-space: normal;
-    }
-    &__text {
-      max-width: 700px;
-      margin: 0 auto;
-    }
-    &-main {
-      flex-wrap: wrap;
-    }
-  }
-  .info {
-    width: 100%;
-    flex-wrap: wrap;
     &__item {
-      padding-top: 30px;
-      padding-bottom: 30px;
-    }
-    &-left {
-      .info-wrap {
-        margin-left: 140px;
-        margin-right: 0;
-        padding: 80px 15px 20px;
+      a {
+        border-color: $main-color;
       }
-      &::after {
-        left: calc(-382px / 2);
-        right: auto;
-      }
-    }
-    &-right {
-      .info-wrap {
-        margin-right: 150px;
-        margin-left: 0;
-        padding: 80px 15px 20px;
-      }
-      position: relative;
-      &::after {
-        content: "";
-        height: 689px;
-        width: 420px;
-
-        z-index: 10;
-        background: url(../img/travels-moto3.png) no-repeat;
-        background-position: 210px center;
-        background-size: cover;
-        position: absolute;
-        right: (-420px / 2);
-        top: 55%;
-        transform: translate(-210px, -50%);
-      }
-    }
-  }
-  .start {
-    .wrap {
-      padding-left: 30px;
-      padding-right: 30px;
-    }
-    &__title {
-      white-space: normal;
-    }
-  }
-}
-
-@media (max-width: 768px) {
-  .header-bg {
-    &::after {
-      display: none;
-    }
-  }
-  .header-links {
-    flex-direction: row;
-    li:first-of-type {
-      position: absolute;
-      right: 0;
-      top: 60px;
-    }
-    li + li {
-      margin-left: 20px;
     }
   }
   .header-main {
@@ -456,7 +361,6 @@
     padding-right: 15px;
   }
 }
->>>>>>> 4b277ce734adc2c14050ecd0007a78b0b2cceaab
 @media (max-width: 640px) {
   .contacts {
     padding-top: 70px;
@@ -576,5 +480,15 @@
     font-size: 16px;
     padding-left: 15px;
     padding-right: 15px;
+  }
+  .slider-btn {
+		font-size: 30px;
+		bottom: 20px;
+  }
+  .icon-arrow-right {
+		right: 40%;
+  }
+  .icon-arrow-left {
+		left: 40%;
   }
 }
