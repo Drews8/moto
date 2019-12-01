@@ -291,11 +291,11 @@ a.header-links__item_burger {
 
     @keyframes scale {
       0% {
-				transform: scale(0.93);
-			}
-			100%{
-				transform: scale(1);
-			}
+        transform: scale(0.93);
+      }
+      100% {
+        transform: scale(1);
+      }
     }
   }
 
@@ -386,20 +386,19 @@ a.header-links__item_burger {
 
   &__btn {
     display: inline-block;
-		padding: 10px 30px;
-		color: #fff;
-		background-color: $main-color;
-		transition: .5s;
+    padding: 10px 30px;
+    color: #fff;
+    background-color: $main-color;
+    transition: 0.5s;
     border-radius: 20px;
 
     font-family: "BebasNeue-Book";
     font-size: 21px;
-		font-weight: 600;
-		&:hover{
-			background-color: #fff;
-			color: $main-color;
-			
-		}
+    font-weight: 600;
+    &:hover {
+      background-color: #fff;
+      color: $main-color;
+    }
   }
 }
 
@@ -439,18 +438,7 @@ a.header-links__item_burger {
     max-width: 500px;
     margin-left: auto;
   }
-  &::after {
-    content: "";
-    height: 767px;
-    width: 358px;
-
-    z-index: 10;
-    background: url(../img/about-us-moto.png) no-repeat;
-    position: absolute;
-    right: calc(-358px / 2);
-    top: 50%;
-    transform: translateY(-50%);
-  }
+  
   &__title {
     font-family: "BebasNeue-Book";
     font-weight: 800;
@@ -470,7 +458,26 @@ a.header-links__item_burger {
       padding-top: 15px;
       color: rgba(#fff, 0.44);
     }
-  }
+	}
+	&__img{
+		width: 1px;
+		height: 1px;
+		position: relative;
+		&::after {
+			content: "";
+			height: 767px;
+			width: 358px;
+			top: 0;
+			bottom: 0;
+
+			z-index: 10;
+			background: url(../img/about-us-moto.png) no-repeat;
+			position: absolute;
+			right: calc(-358px / 2);
+			top: 50%;
+			transform: translateY(-50%);
+		}
+	}
 }
 .team {
   width: 50%;
@@ -976,6 +983,43 @@ a.header-links__item_burger {
     line-height: 36px;
     font-weight: 400;
     letter-spacing: 0.9px;
+  }
+}
+#myBtn {
+  display: none; /* Hidden by default */
+  width: 75px;
+  height: 75px;
+  position: fixed; /* Fixed/sticky position */
+  bottom: 10%; /* Place the button at the bottom of the page */
+  right: 6%; /* Place the button 30px from the right */
+	border: 3px solid #fff;
+	padding: 0;
+  z-index: 99; /* Make sure it does not overlap */
+
+  outline: none; /* Remove outline */
+  background-color: $main-color; /* Set a background color */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+
+  border-radius: 100%; /* Rounded corners */
+  font-size: 18px; /* Increase font size */
+
+  &:hover {
+    background-color: #555; /* Add a dark-grey background on hover */
+  }
+  
+  &::before {
+    content: "\f077";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+		transform: translate(-51%, -50%);
+    
+		border-radius: 100%;
+		
+    
+		font-family: "icomoon";
+		line-height: 70px;
   }
 }
 
